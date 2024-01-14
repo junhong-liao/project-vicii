@@ -1,0 +1,24 @@
+Mitigation Strategies
+Implement Rating Decay: Consider introducing a mechanism where ratings can slightly decrease over time due to inactivity or consistent poor performance, to maintain rating accuracy.
+Skill-Level Brackets: Create brackets or leagues to group users with similar skill levels, even within the same rating range.
+Regular System Review: Continuously monitor and adjust the rating algorithm to ensure it remains fair and relevant.
+Transparency: Clearly communicate how ratings are calculated and what they represent to maintain user trust and understanding.
+Prevent Gaming: Implement checks to prevent exploitation of the karma system, like limits on points from referrals or subjective feedback.
+
+---
+
+KARMA, for nice stuff, including consistency rates
+Performance, for addtl rating incr
+Amount of mocks done, including consistency rates
+- Your YOE in the area youre interviewing in
+
+---
+Additional information
+
+Client ID
+
+73522859990-ik6cq60hfc7rvr3gcmn6k4rfh02d6566.apps.googleusercontent.com
+ 
+Client secret
+
+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
