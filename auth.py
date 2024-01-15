@@ -19,6 +19,7 @@ oa.register(
         'scope' : 'openid email profile'
     }
 )
+
 """
 async allows FastAPI to handle multiple requests concurrently
 when waiting on IO-bound operations (db call), frees up event loop to handle other requests
