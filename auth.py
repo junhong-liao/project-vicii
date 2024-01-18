@@ -28,7 +28,8 @@ oauth.register(
     authorize_params=None,
     api_base_url ='https://accounts.google.com/o/oauth2/v1',
     client_kwargs={
-        'scope' : 'openid email profile'
+        'scope': 'openid email profile',
+        "jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
     }
 )
 
@@ -43,7 +44,6 @@ async allows FastAPI to handle multiple requests concurrently
 when waiting on IO-bound operations (db call), frees up event loop to handle other requests
 However,if operation is bounded by CPU (very complex), async will not necessarily provide benefits...
 """
-
 # OAuth callback route
 @app.get("/auth")
 async def auth(request: Request):
@@ -55,7 +55,7 @@ async def auth(request: Request):
         # 401 unauthorized, convert exception to str
         raise HTTPException(status_code=401, detail=str(e))
 
-# endpoint for tests
+# testing endpoint
 @app.get("/greet/{name}")
 def greet(name: str):
     return {"message": f"Hello, {name}!"}
