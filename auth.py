@@ -26,10 +26,10 @@ oauth.register(
     access_token_params=None,
     authorize_url='https://accounts.google.com/o/oauth2/auth',
     authorize_params=None,
-    api_base_url ='https://accounts.google.com/o/oauth2/v1',
+    api_base_url='https://accounts.google.com/o/oauth2/v1',
+    jwks_uri="https://www.googleapis.com/oauth2/v3/certs",
     client_kwargs={
         'scope': 'openid email profile',
-        "jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
     }
 )
 
@@ -45,14 +45,27 @@ when waiting on IO-bound operations (db call), frees up event loop to handle oth
 However,if operation is bounded by CPU (very complex), async will not necessarily provide benefits...
 """
 # OAuth callback route
+# @app.get("/auth")
+# async def auth(request: Request):
+#     try:
+#         token = await oauth.google.authorize_access_token(request)
+#         user = await oauth.google.parse_id_token(request, token)
+#         return {"user": user}
+#     except Exception as e:
+#         # 401 unauthorized, convert exception to str
+#         raise HTTPException(status_code=401, detail=str(e))\
+
+# debug version
 @app.get("/auth")
 async def auth(request: Request):
     try:
         token = await oauth.google.authorize_access_token(request)
+        # print(token)
+        # user = await oauth.google.parse_id_token(request, token['id_token'])
         user = await oauth.google.parse_id_token(request, token)
         return {"user": user}
     except Exception as e:
-        # 401 unauthorized, convert exception to str
+    #     # 401 unauthorized, convert exception to str
         raise HTTPException(status_code=401, detail=str(e))
 
 # testing endpoint
