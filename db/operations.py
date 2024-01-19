@@ -21,7 +21,6 @@ def add_user(user: User):
         conn.commit()
         return {"message": "User added successfully"}
 
-
 @router.get("/users/id/{id}")
 def get_user_by_id(id: int):
     with db.get_connection() as conn:

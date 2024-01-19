@@ -14,7 +14,6 @@ class Database:
                                                                **self.dbconfig)
 
     def get_connection(self):
-        cursor = conn.cursor()
         try:
             conn = self.pool.get_connection()
             cursor = conn.cursor()
