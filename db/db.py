@@ -37,7 +37,7 @@ cursor.execute("""
 """)
 
 class User(BaseModel):
-    username: str
+    username: str=None
     email: str
     elo: int=1000
 
