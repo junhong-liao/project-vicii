@@ -42,14 +42,15 @@ async def google_callback(request: Request):
             # explain/ first check if the user exists
             response = requests.get(f"{API_BASE_URL}/users/{user_email}")
             # feature/ consider moving user creation to another endpoint
-            if not response:
+            if len(response) == 0:
                 user_data = {
-                    "username": user_info["name"],
-                    "email": user_info["email"],
+                    "username": user_info["first_name"],
+                    "email": user_email,
                     # base elo = 1000
                     "elo": 1000
                 }
                 response = requests.post(f"{API_BASE_URL}/db/users", user_data)
+                print(response)
     except Exception as e:
         print(e)
     finally:
