@@ -22,3 +22,4 @@ async def google_callback(request: Request):
     with google_sso:
         user = await google_sso.verify_and_process(request)
     return user
+
