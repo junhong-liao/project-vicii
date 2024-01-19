@@ -17,6 +17,7 @@ class Database:
         cursor = conn.cursor()
         try:
             conn = self.pool.get_connection()
+            cursor = conn.cursor()
             cursor.execute("USE vicii_db")
             return conn
         
