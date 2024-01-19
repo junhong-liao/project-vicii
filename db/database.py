@@ -16,19 +16,21 @@ class Database:
     def get_connection(self):
         conn = self.pool.get_connection()
         cursor = conn.cursor()
-        cursor.execute("CREATE DATABASE IF NOT EXISTS vicii_db")
         cursor.execute("USE vicii_db")
         return conn
 
     def initialize_db(self):
-        with self.get_connection() as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS users (
-                    id INT AUTO_INCREMENT PRIMARY KEY,
-                    username VARCHAR(16),
-                    email VARCHAR(255),
-                    elo INT
-                )
-            """)
-            conn.commit()
+        conn = self.pool.get_connection()
+        cursor = conn.cursor()
+        cursor.execute("CREATE DATABASE IF NOT EXISTS vicii_db")
+        cursor.execute("USE vicii_db")
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(16),
+                email VARCHAR(255),
+                elo INT
+            )
+        """)
+        conn.commit()
+        # does it matter I'm not closing my connection and cursor here?
