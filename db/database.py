@@ -1,5 +1,4 @@
 import mysql.connector
-# pooling helps manage and reuse database connections more efficiently
 from mysql.connector import pooling
 
 class Database:
