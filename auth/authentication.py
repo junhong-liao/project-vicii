@@ -35,9 +35,8 @@ async def google_callback(request: Request):
                     email=user_email,
                     elo=1000
                 )
-                print("NOT ADDED YET")
                 add_user(user)
-                print("ADDED CONFIRMED")
+            # replace this with a redirect to user homepage...
             return user_info
     except Exception as e:
         print(e)
