@@ -10,7 +10,16 @@ def get_users():
     with db.get_connection() as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM users")
-        return cursor.fetchall() or []
+        users = cursor.fetchall() or []
+        result = []
+        for user in users:
+            result.append({
+                "id": user[0],
+                "username": user[1],
+                "email": user[2],
+                "elo": user[3]             
+            })
+        return result
 
 @router.post("/users")
 def add_user(user: User):
@@ -26,14 +35,32 @@ def get_user_by_id(id: int):
     with db.get_connection() as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM users WHERE id = %s", (id,))
-        return cursor.fetchone()
+        user = cursor.fetchone()
+        user_data = {
+            "id": user[0],
+            "username": user[1],
+            "email": user[2],
+            "elo": user[3]             
+        }
+        return user_data
 
-@router.get("users/email/{email}")
+@router.get("/users/email/{email}")
 def get_user_by_email(email: str):
     try:
         with db.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+            user = cursor.fetchone()
+            if user is not None:
+                user_data = {
+                    "id": user[0],
+                    "username": user[1],
+                    "email": user[2],
+                    "elo": user[3]             
+                }
+                return user_data
+            else:
+                return []
     except Exception as e:
         print(str(e))
     
