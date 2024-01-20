@@ -1,6 +1,7 @@
 from fastapi import APIRouter
-from starlette.requests import Request
+from fastapi.responses import RedirectResponse
 from fastapi_sso.sso.google import GoogleSSO
+from starlette.requests import Request
 from dotenv import load_dotenv
 from db.models import User
 from db.operations import get_user_by_email, add_user
@@ -35,7 +36,7 @@ async def google_callback(request: Request):
                     elo=1000
                 )
                 add_user(user)
-            # replace this with a redirect to user homepage...
-            return user_info
+            redirect_url = "https://www.junhongliao.com"
+            return RedirectResponse(url=redirect_url)
     except Exception as e:
         print(e)
