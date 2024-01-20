@@ -27,7 +27,6 @@ async def google_callback(request: Request):
         with google_sso:
             user_info = await google_sso.verify_and_process(request)
             first_name, user_email = user_info.first_name, user_info.email
-            print(f"USER EMAIL: {user_email}")
             user_data = get_user_by_email(user_email)
             if len(user_data) == 0:
                 user = User(
