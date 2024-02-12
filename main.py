@@ -3,7 +3,7 @@ from db.operations import router as db_router
 from db.database import Database
 from auth.authentication import router as auth_router
 
-app = FastAPI(title="Vicii v1.0")
+app = FastAPI(title="Vicii v1.1")
 
 db = Database()
 db.initialize_db()

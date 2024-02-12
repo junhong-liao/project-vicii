@@ -35,6 +35,7 @@ async def google_callback(request: Request):
                     email=user_email,
                     elo=1000
                 )
+                # add to db
                 add_user(user)
             redirect_url = "https://www.junhongliao.com"
             return RedirectResponse(url=redirect_url)
