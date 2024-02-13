@@ -33,7 +33,7 @@ So while each ELO function for PM vs SWE vs Consulting is different, we can use 
 As in, if MBB consulting interviews look for Communication, Strategy, and Analytical Thinking, and SWE needs Analytical Thinking, Communication, and Math, for example,
 Then we could calculate the consulting elo of an engineer, for example.
 
-Weights are in place to ensure that your ELO can't be carried by just one factor alone.
+Weights are in place to ensur i.e that your ELO can't be carried by just one factor alone.
 
 Matching based on this elo system will take place based on signups.
 
