@@ -1,5 +1,8 @@
 """
 
+Question bank:
+    Pull from pmpractice
+
 Updated matching process:
     Free users:
         matching times at 9am and 6pm, your local time.
@@ -8,5 +11,10 @@ Updated matching process:
         unlimited interviews a day
         unlimited 'rerolls a day
 
-"""
+    Connect to db:
+        Track mocks done
 
+    Feedback:
+        Fill out feedback forms
+
+"""
